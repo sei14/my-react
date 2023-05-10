@@ -1,29 +1,26 @@
-import React, {useState, useEffect} from 'react'
-
-const Fetch = () => {
-
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        fetch(' https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/', {method: 'GET'})
-        .then(res => res.json())
-        .then(data => {
-            setPosts(data)
-        })
-    },[])
-
-    return (
-        <div>
-            <ul>
-                {
-                    posts.map(post => 
-                    <li key={post.id}>{post.title}</li>
-                    )
-                }
-            </ul>
-
-        </div>
-    )
+import React, { useState, useEffect } from 'react'
+export default function Posts() {
+  const [post, getPost] = useState([])
+  const API = ;
+  const fetchPost = () => {
+    fetch(API)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+        getPost(res)
+      })
+  }
+  useEffect(() => {
+    fetchPost()
+  }, [])
+  return (
+    <>
+      <h2>新着スレッド</h2>
+      <ul>
+        {post.map((item, i) => {
+          return <li key={i}>{item.title}</li>
+        })}
+      </ul>
+    </>
+  )
 }
-
-export default Fetch;
