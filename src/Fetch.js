@@ -5,7 +5,7 @@ const Fetch = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts', {method: 'GET'})
+        fetch('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=10', {method: 'GET'})
         .then(res => res.json())
         .then(data => {
             setPosts(data)
